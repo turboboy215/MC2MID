@@ -14,7 +14,7 @@ Examples:
 * MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 7
 * MC2MID "Dragon's Lair - The Legend (E) [!].gb" 1
 
-This tool was based on my own reverse-engineering of the sound engine, partially based on disassembly.
+This tool was based on my own reverse-engineering of the sound engine, partially based on disassembly of Aladdin's sound code.
 
 Also included is another program, MC2TXT, which prints out information about the song data from each game. This is essentially a prototype of MC2MID.
 
