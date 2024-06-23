@@ -8,11 +8,11 @@ It works with ROM images. To use it, you must specify the name of the ROM follow
 For games that contain multiple banks of music (usually 2; Earthworm Jim has 3), you must run the program multiple times specifying where each different bank is located. However, in order to prevent files from being overwritten, the MIDI files from the previous bank must either be moved to a separate folder or renamed.
 
 Examples:
-MC2MID "Aladdin (U) (Beta) [S].gb" B
-MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 5
-MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 6
-MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 7
-MC2MID "Dragon's Lair - The Legend (E) [!].gb" 1
+* MC2MID "Aladdin (U) (Beta) [S].gb" B
+* MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 5
+* MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 6
+* MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 7
+* MC2MID "Dragon's Lair - The Legend (E) [!].gb" 1
 
 This tool was based on my own reverse-engineering of the sound engine, partially based on disassembly.
 
@@ -71,6 +71,6 @@ The following is a list of theoretically compatible games, although not all game
   * Woody Woodpecker
   * World Cup Striker/Soccer
 
-##To do:
+## To do:
   * Panning support
   * Support for other versions of the sound engine (NES, Game Gear, Game Boy Advance)
