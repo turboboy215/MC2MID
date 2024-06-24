@@ -279,7 +279,7 @@ int main(int args, char* argv[])
 		{
 			songNum = 1;
 			i = tableOffset;
-			while ((nextPtr = ReadLE16(&romData[i + 10 - bankAmt])) >= seqPtrs[0] && (nextPtr = ReadLE16(&romData[i + 10 - bankAmt])) != 9839)
+			while ((nextPtr = ReadLE16(&romData[i + 10 - bankAmt])) >= bankAmt && (nextPtr = ReadLE16(&romData[i + 10 - bankAmt])) != 9839)
 			{
 				seqPtrs[0] = ReadLE16(&romData[i - bankAmt]);
 				printf("Song %i channel 1: 0x%04x\n", songNum, seqPtrs[0]);
