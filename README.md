@@ -7,6 +7,8 @@ This tool converts music from Game Boy and Game Boy Color games using Mark Cooks
 It works with ROM images. To use it, you must specify the name of the ROM followed by the number of the bank containing the sound data (in hex).
 For games that contain multiple banks of music (usually 2; Earthworm Jim has 3), you must run the program multiple times specifying where each different bank is located. However, in order to prevent files from being overwritten, the MIDI files from the previous bank must either be moved to a separate folder or renamed.
 
+Note that for many games, there are "empty" tracks (usually the first or last track). This is normal.
+
 Examples:
 * MC2MID "Aladdin (U) (Beta) [S].gb" B
 * MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 5
@@ -74,3 +76,4 @@ The following is a list of theoretically compatible games, although not all game
 ## To do:
   * Panning support
   * Support for other versions of the sound engine (NES, Game Gear, Game Boy Advance)
+  * GBS file support
