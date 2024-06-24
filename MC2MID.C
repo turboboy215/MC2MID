@@ -13,7 +13,6 @@ unsigned short ReadLE16(unsigned char* Data);
 
 FILE* rom, * mid;
 long bank;
-char offsetString[100];
 long offset;
 long tablePtrLoc;
 long tableOffset;
@@ -23,18 +22,10 @@ long sfxPtrLoc;
 long sfxOffset;
 int i, j;
 char outfile[1000000];
-char* outName;
-char* outExt;
 const char MagicBytes[10] = { 0x6F, 0x26, 0x00, 0x29, 0x54, 0x5D, 0x29, 0x29, 0x19, 0x11 };
 const char MacroFindOld[13] = { 0xE1, 0x11, 0xFE, 0xFF, 0x19, 0x3E, 0x01, 0x22, 0x03, 0x0A, 0xCB, 0x27, 0x11 };
 const char MacroFindNew[5] = { 0xCB, 0x27, 0x30, 0x06, 0x11 };
 const char SFXFind[5] = { 0xCB, 0x27, 0x85, 0x6F, 0x30 };
-const char stepTabFastest[16] = { 0x01, 0x02, 0x03, 0x04, 0x06, 0x09, 0x0C, 0x12, 0x18, 0x24, 0x30, 0x48, 0x60, 0x04, 0x08, 0x10 };
-const char stepTabSlow[16] = { 0x02, 0x03, 0x04, 0x06, 0x08, 0x0C, 0x10, 0x18, 0x20, 0x30, 0x40, 0x60, 0x80, 0xC0, 0x05, 0x0A };
-const char stepTabNormal[16] = { 0x03, 0x04, 0x06, 0x09, 0x0C, 0x12, 0x18, 0x24, 0x30, 0x48, 0x60, 0x90, 0xC0, 0x08, 0x10, 0x20 };
-const char stepTabFast[16] = { 0x04, 0x06, 0x08, 0x0C, 0x10, 0x18, 0x20, 0x30, 0x40, 0x60, 0x80, 0xC0, 0xFC, 0x05, 0x0A, 0x14 };
-const char stepTabVFast[16] = { 0x05, 0x07, 0x0A, 0x0F, 0x14, 0x1E, 0x28, 0x3C, 0x50, 0x78, 0xA0, 0xF0, 0x10, 0x20, 0x40, 0x80 };
-const char stepTabNormalAlt[16] = { 0x03, 0x04, 0x06, 0x09, 0x0C, 0x12, 0x18, 0x24, 0x30, 0x48, 0x60, 0x90, 0xC0, 0x02, 0x10, 0x20 };
 int curStepTab[16];
 unsigned long macroList[500];
 long seqPtrs[4];
@@ -48,8 +39,6 @@ int highestMacro = 1;
 unsigned static char* romData;
 unsigned static char* midData;
 unsigned static char* ctrlMidData;
-int noteValList[16] = { 15, 20, 30, 45, 60, 90, 120, 180, 240, 360, 480, 720, 960, 40, 80, 40 };
-int noteValList2[16] = { 15, 20, 30, 45, 60, 90, 120, 180, 240, 360, 480, 720, 960, 40, 40, 40 };
 
 long midLength;
 
@@ -289,7 +278,7 @@ int main(int args, char* argv[])
 				printf("Song %i channel 3: 0x%04x\n", songNum, seqPtrs[2]);
 				seqPtrs[3] = ReadLE16(&romData[i + 6 - bankAmt]);
 				printf("Song %i channel 4: 0x%04x\n", songNum, seqPtrs[3]);
-				stepPtr = ReadLE16(&romData[i + 8 - bankAmt]);
+				stepPtr = ReadLE16(&romData[i + 8- bankAmt]);
 				printf("Song %i step table: 0x%04x\n", songNum, stepPtr);
 				endPtr = nextPtr - bankAmt;
 
@@ -338,7 +327,6 @@ void song2mid(int songNum, long ptrs[], long nextPtr)
 	static const char* TRK_NAMES[4] = { "Square 1", "Square 2", "Wave", "Noise" };
 	long romPos = 0;
 	unsigned int midPos = 0;
-	long seqPos = 0;
 	int trackCnt = 4;
 	int curTrack = 0;
 	long midTrackBase = 0;
@@ -497,14 +485,13 @@ void song2mid(int songNum, long ptrs[], long nextPtr)
 
 
 			romPos = ptrs[curTrack] - bankAmt;
-			seqPos = romPos;
 
 			command[0] = romData[romPos];
 			command[1] = romData[romPos + 1];
 			command[2] = romData[romPos + 2];
 			command[3] = romData[romPos + 3];
 
-			while (romPos < nextPtr && trackEnd == 0)
+			while (romPos < bankSize && trackEnd == 0)
 			{
 				command[0] = romData[romPos];
 				command[1] = romData[romPos + 1];
