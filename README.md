@@ -20,7 +20,7 @@ This tool was based on my own reverse-engineering of the sound engine, partially
 
 Also included is another program, MC2TXT, which prints out information about the song data from each game. This is essentially a prototype of MC2MID.
 
-The following is a list of theoretically compatible games, although not all games have been tested:
+Supported games:
   * The Addams Family
   * Aladdin (GB)
   * Army Men: Air Combat
