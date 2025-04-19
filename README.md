@@ -77,6 +77,7 @@ Game Boy (Color):
   * Les Visiteurs
   * Woody Woodpecker
   * World Cup Striker/Soccer
+
 NES:
   * The Adventures of Dr. Franken (prototype)
   * Aladdin
@@ -85,6 +86,7 @@ NES:
   * Jimmy Connors Tennis
   * Joe & Mac: Caveman Ninja
   * Prince of Persia
+
 Game Gear/Master System:
  * F-15 Strike Eagle
  * Lemmings 2: The Tribes
