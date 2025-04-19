@@ -1,13 +1,15 @@
 # MC2MID
 
-## Mark Cooksey (GB/GBC) to MIDI converter
+## Mark Cooksey (NES/GB/GBC/GG/SMS) to MIDI converter
 
-This tool converts music from Game Boy and Game Boy Color games using Mark Cooksey's sound engine to MIDI format.
+This tool converts music from NES, Game Boy and Game Boy Color, Game Gear, and Master System games using Mark Cooksey's sound engine to MIDI format.
 
 It works with ROM images. To use it, you must specify the name of the ROM followed by the number of the bank containing the sound data (in hex).
 For games that contain multiple banks of music (usually 2; Earthworm Jim has 3), you must run the program multiple times specifying where each different bank is located. However, in order to prevent files from being overwritten, the MIDI files from the previous bank must either be moved to a separate folder or renamed.
 
 Note that for many games, there are "empty" tracks (usually the first or last track). This is normal.
+
+To specify the system, use an additional command "GB", "NES", or "GG".
 
 Examples:
 * MC2MID "Aladdin (U) (Beta) [S].gb" B
@@ -15,12 +17,15 @@ Examples:
 * MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 6
 * MC2MID "Earthworm Jim - Menace 2 the Galaxy (U) [C][!].gbc" 7
 * MC2MID "Dragon's Lair - The Legend (E) [!].gb" 1
+* MC2MID "Aladdin (E) [!].nes" 2 NES
+* MC2MID "Robocop versus The Terminator (U) [!].gg" 20 GG
 
 This tool was based on my own reverse-engineering of the sound engine, partially based on disassembly of Aladdin's sound code.
 
 Also included is another program, MC2TXT, which prints out information about the song data from each game. This is essentially a prototype of MC2MID.
 
 Supported games:
+Game Boy (Color):
   * The Addams Family
   * Aladdin (GB)
   * Army Men: Air Combat
@@ -72,8 +77,24 @@ Supported games:
   * Les Visiteurs
   * Woody Woodpecker
   * World Cup Striker/Soccer
+NES:
+  * The Adventures of Dr. Franken (prototype)
+  * Aladdin
+  * Dragon's Lair
+  * Indiana Jones and the Last Crusade (UBI Soft)
+  * Jimmy Connors Tennis
+  * Joe & Mac: Caveman Ninja
+  * Prince of Persia
+Game Gear/Master System:
+ * F-15 Strike Eagle
+ * Lemmings 2: The Tribes
+ * Poker Faced Paul's Blackjack
+ * Poker Faced Paul's Gin
+ * Poker Faced Paul's Poker
+ * Poker Faced Paul's Solitaire
+ * RoboCop vs. The Terminator
 
 ## To do:
   * Panning support
-  * Support for other versions of the sound engine (NES, Game Gear, Game Boy Advance)
-  * GBS file support
+  * Support for other versions of the sound engine (Game Boy Advance)
+  * GBS and NSF (and SGC?) file support
